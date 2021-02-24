@@ -1,0 +1,66 @@
+﻿@using NetCore_PostgreSQL.Data.Entity
+@model Kullanici
+@{
+    ViewData["Title"] = "UyeOl";
+    Layout = null;
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/shop-homepage.css" rel="stylesheet">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="~/Content/Login.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="~/Content/Login.css" rel="stylesheet" />
+    <link href="~/Login.css" rel="stylesheet" />
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent" style="margin-left:100px">
+
+            <!-- Tabs Titles -->
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img style="width:100px" src="https://pbs.twimg.com/profile_images/794178207708758016/QRRFL0vi.jpg" id="icon" alt="User Icon" />
+            </div>
+
+            <!-- Login Form -->
+            @*<form>*@
+            @using (Html.BeginForm("UyeOl", "KullanıcıHesabı", FormMethod.Post))
+            {
+                @*<input type="text" id="login" class="fadeIn second" name="login" placeholder="login">*@
+                <br /><br />
+                @Html.TextBoxFor(x => x.Ad, new { @class = "fadeIn second", @placeholder = "Ad" })
+                <br /><br />
+                @*<input type="text" id="password" class="fadeIn third" name="login" placeholder="password">*@
+                @Html.TextBoxFor(x => x.Sifre, new { @class = "fadeIn third", @placeholder = "Password", @type = "password" })
+                <br /><br />
+                @Html.TextBoxFor(x => x.Telefon, new { @class = "fadeIn second", @placeholder = "Telefon" })
+                <br /><br />
+                @Html.TextBoxFor(x => x.EMail, new { @class = "fadeIn second", @placeholder = "E-Mail" })
+                <br /><br />
+                @Html.TextBoxFor(x => x.Adres, new { @class = "fadeIn second", @placeholder = "Adres" })
+                <br /><br />
+                <input type="submit" class="fadeIn fourth" value="Register">
+            }
+            @*</form>*@
+        </div>
+    </div>
+
+</body>
+<footer>
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+</footer>

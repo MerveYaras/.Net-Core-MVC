@@ -1,0 +1,88 @@
+﻿@using NetCore_PostgreSQL.Data.Entity
+@model Adres
+@{
+    ViewData["Title"] = "AdresGir";
+    Layout = "~/Views/Shared/eTicaretLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Kullanıcı Adı</th>
+                <th>Adres</th>
+                <th>Telefon</th>
+                <th>E-Mail</th>
+                <th>Adres Başlığı</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{ var KBilgi = (List<Adres>)ViewBag.KListe;}
+            @for (int i = 0; i < KBilgi.Count; i++)
+            {
+                <tr>
+
+                    <td class="card-body">
+                        <h5> @KBilgi[i].KullaniciAd</h5>
+                    </td>
+                    <td class="card-body">
+                        <h5>@KBilgi[i].YeniAdres</h5>
+                    </td>
+                    <td class="card-body">
+                        <h5>@KBilgi[i].Telefon</h5>
+                    </td>
+                    <td class="card-body">
+                        <h5>@KBilgi[i].EMail</h5>
+                    </td>
+                    <td class="card-body">
+                        <h5>@KBilgi[i].AdresBaslik</h5>
+                    </td>
+                    <td>
+                        <a href="~/Urun/Secilen" class="btn btn-success">Seç</a>
+                    </td>
+                </tr>
+                @if (i == (KBilgi.Count - 1))
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="~/Urun/SiparisEkle?secilen=@KBilgi[i].Id" class="btn btn-outline-info">Devam Et</a>
+                            <br />
+                            <br />
+                            <a class="btn btn-light" data-toggle="collapse" href="#collapse_ornek">Yeni Adres Bilgisi Ekle</a>
+
+                        </td>
+                    </tr>
+                }
+
+            }
+
+            @using (Html.BeginForm("YeniAdresEkle", "Urun", FormMethod.Post))
+            {
+
+                <tr class="collapse" id="collapse_ornek">
+                    <td>  Adres, Telefon, Mailve Adres Başlığını yazınız.</td>
+                    <td> @Html.TextBoxFor(x => x.YeniAdres, new { @class = "form-control" })</td>
+                    <td> @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })</td>
+                    <td> @Html.TextBoxFor(x => x.EMail, new { @class = "form-control" })</td>
+                    <td> @Html.TextBoxFor(x => x.AdresBaslik, new { @class = "form-control" })</td>
+                </tr>
+
+                <tr class="collapse" id="collapse_ornek">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </td>
+                </tr>
+            } 
+        </tbody>
+    </table>
+</div>

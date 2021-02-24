@@ -1,0 +1,19 @@
+﻿@using NetCore_PostgreSQL.Data.Entity
+@model Category
+@{
+    ViewData["Title"] = "KategoryEkle";
+    Layout = "~/Views/Shared/eTicaretLayout.cshtml";
+}
+
+<h1>KategoryEkle</h1>
+
+@using (Html.BeginForm("KategoryEkle", "Kategori", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.Ad)
+        @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+
+}

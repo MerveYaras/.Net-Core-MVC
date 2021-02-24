@@ -1,0 +1,40 @@
+﻿@using NetCore_PostgreSQL.Data.Entity
+@model Urun
+@{
+    ViewData["Title"] = "UrunEkle";
+    Layout = "~/Views/Shared/eTicaretLayout.cshtml";
+}
+
+<h1>UrunEkle</h1>
+
+
+@using (Html.BeginForm("UrunEkle", "Urun", FormMethod.Post))
+{
+    @*@Html.HiddenFor(x => x.Id)*@
+<div class="form-group">
+
+    @Html.LabelFor(x => x.Ad)
+    @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+    @{ETicaretDbContext tablo = new ETicaretDbContext();
+        List<string> kategoriler = tablo.Categories.Select(x=>x.Ad).ToList();
+    }
+    <select>
+        @{ foreach (var item in kategoriler)
+            {
+                <option> @item</option>
+            }
+
+        }
+
+    </select>
+    <br />
+    @Html.LabelFor(x => x.Fiyat)
+    @Html.TextBoxFor(x => x.Fiyat, new { @class = "form-control" })
+    @Html.LabelFor(x => x.ImageUrl)
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+
+</div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+
+}
